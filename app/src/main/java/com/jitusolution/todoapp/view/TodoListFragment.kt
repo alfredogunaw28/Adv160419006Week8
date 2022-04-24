@@ -30,7 +30,7 @@ class TodoListFragment : Fragment() {
             val action = TodoListFragmentDirections.actionCreateTodo()
             Navigation.findNavController(it).navigate(action)
         }
-        
+
         fun observeViewModel() {
             viewModel.todoLD.observe(viewLifecycleOwner, Observer {
                 todoListAdapter.updateTodoList(it)

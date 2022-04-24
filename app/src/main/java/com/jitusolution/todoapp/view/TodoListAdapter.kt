@@ -3,6 +3,7 @@ package com.jitusolution.todoapp.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.jitusolution.todoapp.R
 import com.jitusolution.todoapp.model.Todo
@@ -22,6 +23,19 @@ class TodoListAdapter(val todoList:ArrayList<Todo>)
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int)
     {
         holder.view.checkTask.setText(todoList[position].title.toString())
+
+        holder.view.imageEdit.setOnClickListener {
+            val action =
+                TodoListFragmentDirections.actionEditTodoFragment(todoList[position].uuid)
+
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        holder.view.checkTask.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if(isChecked == true) {
+                (todoList[position])
+            }
+        }
     }
 
     fun updateTodoList(newTodoList: List<Todo>) {
@@ -33,4 +47,5 @@ class TodoListAdapter(val todoList:ArrayList<Todo>)
     override fun getItemCount(): Int {
         return todoList.size
     }
+
 }

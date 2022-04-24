@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.jitusolution.todoapp.model.Todo
 import com.jitusolution.todoapp.model.TodoDatabase
+import com.jitusolution.todoapp.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -41,5 +42,7 @@ class ListTodoViewModel(application: Application) : AndroidViewModel(application
             todoLD.value = db.todoDao().selectAllTodo()
         }
     }
+
+    val db = buildDb(getApplication())
 
 }

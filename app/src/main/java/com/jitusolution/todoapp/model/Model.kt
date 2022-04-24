@@ -9,9 +9,14 @@ data class Todo(
     @ColumnInfo(name="title")
     var title:String,
     @ColumnInfo(name="notes")
-    var notes:String
+    var notes:String,
+    @ColumnInfo(name="priority")
+    var priority:Int
 ) {
     @PrimaryKey(autoGenerate = true)
-    var uuid:Int =0
+    var uuid:Int = 0
+
+    @PrimaryKey(autoGenerate = true)
+    var isdone:Int = 0 //modified here
 }
 
